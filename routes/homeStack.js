@@ -3,26 +3,26 @@ import Home from '../screens/Home';
 import ReviewDetails from '../screens/ReviewDetails';
 
 const screens = {
-    Home: {
-        screen: Home,
-        navigationOptions: {
-            title: 'GameZone',
-            // headerStyle: { backgroundColor: '#eee' }
-        }
-    }, 
-    ReviewDetails: {
-        screen: ReviewDetails,
-        navigationOptions: {
-            title: 'Review Details'
-        }
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      title: 'GameZone'
+      // headerStyle: { backgroundColor: '#eee' }
     }
-}
+  },
+  ReviewDetails: {
+    screen: ReviewDetails,
+    navigationOptions: {
+      title: 'Review Details'
+    }
+  }
+};
 
 const HomeStack = createStackNavigator(screens, {
-    defaultNavigationOptions: {
-        headerTintColor: '#444',
-        headerStyle: { backgroundColor: '#eee', height: 60 }
-    }
+  defaultNavigationOptions: {
+    headerTintColor: '#444',
+    headerStyle: { backgroundColor: '#eee', height: 60 }
+  }
 });
 
-export default HomeStack
+export default HomeStack;
