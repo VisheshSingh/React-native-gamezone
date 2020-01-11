@@ -4,12 +4,15 @@ import {
   Text,
   View,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Modal
 } from 'react-native';
 import { globalStyles } from '../styles/globalStyles';
+import { MaterialIcons } from '@expo/vector-icons';
 import Card from '../shared/Card';
 
 export default function Home({ navigation }) {
+  const [openModal, setOpenModal] = useState(false);
   const [reviews, setReviews] = useState([
     {
       title: 'Zelda, Breath of Fresh Air',
@@ -33,6 +36,23 @@ export default function Home({ navigation }) {
 
   return (
     <View style={globalStyles.container}>
+      <Modal visible={openModal} animationType='slide'>
+        <View style={styles.modalContent}>
+          <MaterialIcons
+            name='close'
+            size={24}
+            style={{ ...styles.modalToggle, ...styles.modalClose }}
+            onPress={() => setOpenModal(false)}
+          />
+          <Text>I am a modal</Text>
+        </View>
+      </Modal>
+      <MaterialIcons
+        name='add'
+        size={24}
+        onPress={() => setOpenModal(true)}
+        style={styles.modalToggle}
+      />
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
@@ -48,3 +68,20 @@ export default function Home({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  modalContent: { flex: 1 },
+  modalToggle: {
+    marginBottom: 12,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    borderColor: '#f2f2f2',
+    borderRadius: 10,
+    padding: 10,
+    borderWidth: 1
+  },
+  modalClose: {
+    marginTop: 20,
+    marginBottom: 0
+  }
+});
