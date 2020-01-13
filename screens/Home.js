@@ -35,6 +35,14 @@ export default function Home({ navigation }) {
     }
   ]);
 
+  const addReviewHandler = review => {
+    review.key = Math.random().toString();
+    setReviews(currentReviews => {
+      return [review, ...currentReviews];
+    });
+    setOpenModal(false);
+  };
+
   return (
     <View style={globalStyles.container}>
       <Modal visible={openModal} animationType='slide'>
@@ -45,7 +53,7 @@ export default function Home({ navigation }) {
             style={{ ...styles.modalToggle, ...styles.modalClose }}
             onPress={() => setOpenModal(false)}
           />
-          <ReviewForm />
+          <ReviewForm addReview={addReviewHandler} />
         </View>
       </Modal>
       <MaterialIcons
