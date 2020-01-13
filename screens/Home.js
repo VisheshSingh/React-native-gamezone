@@ -5,7 +5,9 @@ import {
   View,
   TouchableOpacity,
   FlatList,
-  Modal
+  Modal,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 import { globalStyles } from '../styles/globalStyles';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -46,15 +48,17 @@ export default function Home({ navigation }) {
   return (
     <View style={globalStyles.container}>
       <Modal visible={openModal} animationType='slide'>
-        <View style={styles.modalContent}>
-          <MaterialIcons
-            name='close'
-            size={24}
-            style={{ ...styles.modalToggle, ...styles.modalClose }}
-            onPress={() => setOpenModal(false)}
-          />
-          <ReviewForm addReview={addReviewHandler} />
-        </View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.modalContent}>
+            <MaterialIcons
+              name='close'
+              size={24}
+              style={{ ...styles.modalToggle, ...styles.modalClose }}
+              onPress={() => setOpenModal(false)}
+            />
+            <ReviewForm addReview={addReviewHandler} />
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <MaterialIcons
         name='add'
