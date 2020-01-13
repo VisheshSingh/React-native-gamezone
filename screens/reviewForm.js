@@ -8,7 +8,10 @@ const ReviewForm = ({ addReview }) => {
     <View style={globalStyles.container}>
       <Formik
         initialValues={{ title: '', body: '', rating: '' }}
-        onSubmit={values => addReview(values)}
+        onSubmit={(values, action) => {
+          action.resetForm();
+          addReview(values);
+        }}
       >
         {formikProps => (
           <View>
