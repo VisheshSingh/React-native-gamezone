@@ -10,6 +10,7 @@ import {
 import { globalStyles } from '../styles/globalStyles';
 import { MaterialIcons } from '@expo/vector-icons';
 import Card from '../shared/Card';
+import ReviewForm from './reviewForm';
 
 export default function Home({ navigation }) {
   const [openModal, setOpenModal] = useState(false);
@@ -44,7 +45,7 @@ export default function Home({ navigation }) {
             style={{ ...styles.modalToggle, ...styles.modalClose }}
             onPress={() => setOpenModal(false)}
           />
-          <Text>I am a modal</Text>
+          <ReviewForm />
         </View>
       </Modal>
       <MaterialIcons
