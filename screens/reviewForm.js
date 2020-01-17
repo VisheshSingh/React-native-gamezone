@@ -39,20 +39,32 @@ const ReviewForm = ({ addReview }) => {
               placeholder='Review title'
               value={formikProps.values.title}
               onChangeText={formikProps.handleChange('title')}
+              onBlur={formikProps.handleBlur('title')}
             />
+            <Text style={globalStyles.error}>
+              {formikProps.touched.title && formikProps.errors.title}
+            </Text>
             <TextInput
               style={globalStyles.input}
               placeholder='Review body'
               value={formikProps.values.body}
               onChangeText={formikProps.handleChange('body')}
+              onBlur={formikProps.handleBlur('body')}
             />
+            <Text style={globalStyles.error}>
+              {formikProps.touched.body && formikProps.errors.body}
+            </Text>
             <TextInput
               style={globalStyles.input}
               placeholder='Rating (1-5)'
               value={formikProps.values.rating}
               onChangeText={formikProps.handleChange('rating')}
+              onBlur={formikProps.handleBlur('rating')}
               keyboardType='numeric'
             />
+            <Text style={globalStyles.error}>
+              {formikProps.touched.rating && formikProps.errors.rating}
+            </Text>
             <Button
               title='Submit'
               color='maroon'
